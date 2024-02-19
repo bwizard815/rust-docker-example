@@ -1,9 +1,0 @@
-image:
-  file: .gitpod.Dockerfile
-
-tasks:
-    - init: cargo build
-
-vscode:
-  extensions:
-    - rust-lang.rust-analyzer
