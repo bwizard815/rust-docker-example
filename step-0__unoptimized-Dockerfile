@@ -13,4 +13,3 @@ RUN cargo test --no-run
 
 # Then, we can run the unit test suite to test
 CMD ["cargo", "test"]
-
