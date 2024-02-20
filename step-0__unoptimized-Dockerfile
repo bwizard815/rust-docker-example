@@ -8,8 +8,5 @@ COPY . .
 
 # Assuming you want to compile the Rust project here, you might run cargo build
 RUN cargo build
-RUN cargo test --no-run
 #RUN true
 
-# Then, we can run the unit test suite to test
-CMD ["cargo", "test"]
