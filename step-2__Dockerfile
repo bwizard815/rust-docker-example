@@ -3,7 +3,6 @@ RUN cargo install sccache --version ^0.7
 RUN cargo install cargo-chef --version ^0.1
 ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/sccache
 
-# * Copy the contents of the project directory
 # * Use Cargo Chef to generate recipe.json file
 FROM base AS planner
 WORKDIR /app
@@ -11,9 +10,9 @@ COPY . .
 RUN --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
     cargo chef prepare --recipe-path recipe.json
 
-# * Copy recipe.json from 
+# * Copy recipe.json from previous stage
 # * Build the dependencies with `cargo chef cook` (which can take advantage of cached recipe.json)
-# * Copy the contents of the project directory
+# * Build the source code with `cargo build`
 FROM base as builder
 WORKDIR /app
 COPY --from=planner /app/recipe.json recipe.json

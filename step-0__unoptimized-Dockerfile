@@ -1,12 +1,9 @@
 FROM rust:1.75
 
+
+# * Build the dependencies and source code with `cargo build`
 WORKDIR /app
-
-# Copy the contents of the hello-rust directory into the current directory of
-# the Docker container
 COPY . .
-
-# Assuming you want to compile the Rust project here, you might run cargo build
 RUN cargo build
 #RUN true
 
