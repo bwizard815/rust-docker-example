@@ -1,9 +1,6 @@
 FROM rust:1.75
 
-
-# * Build the dependencies and source code with `cargo build`
 WORKDIR /app
 COPY . .
 RUN cargo build
 #RUN true
-
